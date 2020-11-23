@@ -5,17 +5,15 @@ exclude_files: ~
 layers:
   - name: Model
     collectors:
-      - type: className
-        regex: .*App\\Models\\*.*
       - type: extends
         extends: 'Illuminate\Database\Eloquent\Model'
 
   - name: Controller
     collectors:
       - type: className
-        regex: .*App\\Http\\Controllers\\Controller.*
-      - type: className
         regex: .*App\\Http\\Controllers\\.*Controller.*
+      - type: className
+        regex: .*App\\Http\\Controllers\\Controller.*
 
   - name: Request
     collectors:

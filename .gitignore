@@ -32,10 +32,11 @@ Homestead.json
 composer.lock
 package-lock.json
 
+*.cache
+*.sh
 /.vscode
 /.phpintel
 /.idea
 /.project
 /.buildpath
 /.settings
-*.sh
