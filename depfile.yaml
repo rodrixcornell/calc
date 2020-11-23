@@ -1,0 +1,78 @@
+# depfile.yaml
+paths:
+  - ./
+exclude_files: ~
+layers:
+  - name: Model
+    collectors:
+      - type: className
+        regex: .*App\\Models\\*.*
+      - type: extends
+        extends: 'Illuminate\Database\Eloquent\Model'
+
+  - name: Controller
+    collectors:
+      - type: className
+        regex: .*App\\Http\\Controllers\\Controller.*
+      - type: className
+        regex: .*App\\Http\\Controllers\\.*Controller.*
+
+  - name: Request
+    collectors:
+      - type: className
+        regex: .*App\\Http\\Requests\\.*Request.*
+
+  - name: Service
+    collectors:
+      - type: className
+        regex: .*App\\Services\\.*Service.*
+  - name: RepositoryInterface
+    collectors:
+      - type: className
+        regex: .*App\\Repositories\\.*RepositoryInterface.*
+
+  - name: RepositoryConcrete
+    collectors:
+      - type: className
+        regex: .*App\\Repositories\\Eloquent\\.*Repository.*
+
+  - name: Command
+    collectors:
+      - type: className
+        regex: .*App\\Console\\Command\\*.*
+
+  - name: Event
+    collectors:
+      - type: className
+        regex: .*App\\Events\\*.*
+
+  - name: Policy
+    collectors:
+      - type: className
+        regex: .*App\\Policies\\.*Policy.*
+
+ruleset:
+  Request: ~
+  Controller:
+    - Controller
+    - Service
+    - Request
+    - Policy
+  Service:
+    - Request
+    - RepositoryInterface
+    - Event
+  RepositoryInterface:
+    - RepositoryInterface
+  RepositoryConcrete:
+    - Model
+    - RepositoryInterface
+    - RepositoryConcrete
+  Command:
+    - Service
+  Model:
+    - Event
+  Event:
+    - Model
+  Policy:
+    - Model
