@@ -28,8 +28,9 @@ $factory->define(User::class, function (Faker $faker) {
 		'username' => $faker->userName,
 		'is_admin' => 0,
 		'is_active' => 0,
-		'cpf' => rand(10000000000, 99999999999),
-		// 'cpf' => $faker->cpf,
+		// 'cpf' => rand(10000000000, 99999999999),
+		'cpf' => $faker->cpf(false),
 		'matricula' => rand(99999, 999999) . '-' . rand(1, 9) . chr(rand(65, 90)),
+		// 'matricula' => $faker->rg(false) . '-' . chr(rand(65, 90)),
 	];
 });

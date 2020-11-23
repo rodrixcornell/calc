@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
+	// return redirect()->route('home');
 });
 
-Auth::routes();
+Auth::routes([
+	'register' => false,
+]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::group([
+// 	'prefix' => 'users',
+// 	'as' => 'users.',
+// 	// 'namespace' => 'Admin',
+// 	// 'middleware' => 'auth',
+// ], function () {
+// 	Route::get('profile', 'UserController@profile')->name('profile');
+// 	Route::post('profile', 'UserController@update_avatar')->name('profile');
+// });
+
+Route::resources([
+	'users' => UserController::class,
+]);

@@ -69,6 +69,8 @@ composer require symfony/filesystem
 ```
 ## Migrations & Seeders
 ```bash
+composer require doctrine/dbal
+
 ./artisan migrate:fresh --verbose --force --seed
 ./artisan migrate:fresh --verbose --drop-views --force --seed
 ./artisan migrate:fresh --verbose --force && ./artisan db:seed --verbose --force

@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
 			],
 		);
 
-		$usersQuantity = 99;
+		$usersQuantity = 19;
 
 		factory(User::class, $usersQuantity)->create()->each(function ($users) {
 			// print_r($users);

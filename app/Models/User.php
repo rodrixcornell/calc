@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
 	 * @var array
 	 */
 	protected $fillable = [
-		'name', 'email', 'password',
+		'name', 'email', 'password', 'username', 'is_admin', 'is_active', 'cpf', 'matricula',
 	];
 
 	/**
@@ -35,5 +36,15 @@ class User extends Authenticatable
 	 */
 	protected $casts = [
 		'email_verified_at' => 'datetime',
+		'created_at' => 'datetime:d/m/Y H:m:s',
+		'updated_at' => 'datetime:d/m/Y H:m:s',
+		'deleted_at' => 'datetime:d/m/Y H:m:s',
+		'is_admin' => 'boolean',
+		'is_active' => 'boolean',
 	];
+
+	public function organizations()
+	{
+		return $this->hasMany(Organization::class);
+	}
 }
