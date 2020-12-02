@@ -42,6 +42,7 @@ sed -i "s/'timezone'.*/'timezone' => env('APP_TZ', 'UTC'),/" config/app.php
 sed -i "s/'locale'.*/'locale' => env('APP_LOCALE', 'en'),/" config/app.php
 sed -i "s/'fallback_locale'.*/'fallback_locale' => env('APP_FALLBACK', 'en'),/" config/app.php
 sed -i "s/'faker_locale'.*/'faker_locale' => env('APP_FAKER', 'en_US'),/" config/app.php
+sed -i "s/.*APP_URL.*/&\\n\nAPP_TZ=America\/Manaus\nAPP_LOCALE=pt_BR\nAPP_FALLBACK=pt_BR\nAPP_FAKER=pt_BR/" .env
 
 ./artisan clear-compiled --verbose && ./artisan cache:clear --verbose && ./artisan config:clear --verbose && ./artisan event:clear --verbose && ./artisan optimize:clear --verbose && ./artisan route:clear --verbose && ./artisan view:clear --verbose
 
